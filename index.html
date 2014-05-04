@@ -27,9 +27,11 @@
   <!-- Center content -->
 <ion-side-menu-content>
   <ion-header-bar class="bar-dark">
-    <button class="button button-icon" ng-click="toggleProjects()">
+    <!-- <button class="button button-icon" ng-click="toggleProjects()">
       <i class="icon ion-navicon"></i>
-    </button>
+    </button> -->
+    <button class="button button-icon icon ion-ios7-minus-outline" 
+          ng-click="data.showDelete = !data.showDelete"></button>
     <h1 class="title">{{activeProject.title}}</h1>
     <!-- New Task button-->
     <button class="button button-icon" ng-click="newTask()">
@@ -37,10 +39,9 @@
     </button>
   </ion-header-bar>
   <ion-content scroll="false">
-    <ion-list>
+    <ion-list show-delete="data.showDelete">
       <ion-item ng-repeat="task in activeProject.tasks">
-        {{task.title}}<ion-delete-button class="ion-minus-circled" 
-                             ng-click="remove(task)">
+        <ion-delete-button class="ion-minus-circled" ng-click="remove(task)">{{task.title}}
       </ion-item>
     </ion-list>
   </ion-content>
