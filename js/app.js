@@ -28,7 +28,12 @@ angular.module('todo', ['ionic'])
     },
     setLastActiveIndex: function(index) {
       window.localStorage['lastActiveProject'] = index;
-    }
+    }/*,
+    delete: function(deleteTask){
+      window.localStorage.removeItem(task);
+    }*/
+    
+
   }
 })
 
@@ -50,9 +55,9 @@ angular.module('todo', ['ionic'])
   // Grab the last active, or the first project
   $scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];
 
-  // Called to create a new project
+  // Called to create a new list
   $scope.newProject = function() {
-    var projectTitle = prompt('Project name');
+    var projectTitle = prompt('List Name');
     if(projectTitle) {
       createProject(projectTitle);
     }
@@ -86,6 +91,11 @@ angular.module('todo', ['ionic'])
 
     task.title = "";
   };
+
+  $scope.remove = function(task){
+    $scope.activeProject.tasks.splice(task, 1);
+    // $scope.activeProject.tasks.localStorage.removeItem(task)
+  }
 
   $scope.newTask = function() {
     $scope.taskModal.show();

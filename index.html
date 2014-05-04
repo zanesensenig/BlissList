@@ -39,7 +39,8 @@
   <ion-content scroll="false">
     <ion-list>
       <ion-item ng-repeat="task in activeProject.tasks">
-        {{task.title}}
+        {{task.title}}<ion-delete-button class="ion-minus-circled" 
+                             ng-click="remove(task)">
       </ion-item>
     </ion-list>
   </ion-content>
