@@ -76,6 +76,15 @@ angular.module('todo', ['ionic'])
   }, {
     scope: $scope
   });
+  
+  $scope.data = {
+    showDelete: false
+  };
+
+  $scope.remove = function(task){
+    $scope.activeProject.tasks.splice(task, 1);
+    // $scope.activeProject.tasks.localStorage.removeItem(task)
+  }
 
   $scope.createTask = function(task) {
     if(!$scope.activeProject || !task) {
@@ -91,11 +100,6 @@ angular.module('todo', ['ionic'])
 
     task.title = "";
   };
-
-  $scope.remove = function(task){
-    $scope.activeProject.tasks.splice(task, 1);
-    // $scope.activeProject.tasks.localStorage.removeItem(task)
-  }
 
   $scope.newTask = function() {
     $scope.taskModal.show();
