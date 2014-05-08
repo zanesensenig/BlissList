@@ -1,1 +1,4 @@
-/* Empty. Add your own CSS if you like */
+.delete-task{
+	float: right;
+	font-size: 1.25em;
+}

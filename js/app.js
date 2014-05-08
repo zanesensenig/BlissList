@@ -28,12 +28,11 @@ angular.module('todo', ['ionic'])
     },
     setLastActiveIndex: function(index) {
       window.localStorage['lastActiveProject'] = index;
-    }/*,
-    delete: function(deleteTask){
-      window.localStorage.removeItem(task);
-    }*/
+    },
+    deleteTask: function(task){
+      return window.localStorage.removeItem(task);
+    }
     
-
   }
 })
 
@@ -63,6 +62,7 @@ angular.module('todo', ['ionic'])
     }
   };
 
+
   // Called to select the given project
   $scope.selectProject = function(project, index) {
     $scope.activeProject = project;
@@ -76,15 +76,8 @@ angular.module('todo', ['ionic'])
   }, {
     scope: $scope
   });
-  
-  $scope.data = {
-    showDelete: false
-  };
 
-  $scope.remove = function(task){
-    $scope.activeProject.tasks.splice(task, 1);
-    // $scope.activeProject.tasks.localStorage.removeItem(task)
-  }
+
 
   $scope.createTask = function(task) {
     if(!$scope.activeProject || !task) {
@@ -99,6 +92,22 @@ angular.module('todo', ['ionic'])
     Projects.save($scope.projects);
 
     task.title = "";
+  };
+
+  $scope.data = {
+    showDelete: false
+  };
+
+
+  //delete
+
+  // $scope.remove = function(task) {
+  //   $scope.activeProject.tasks.splice($scope.activeProject.tasks.indexOf(task), 1);
+  // };
+
+
+  $scope.deleteTask = function(task) {
+    $scope.activeProject.tasks.splice($scope.activeProject.tasks.indexOf(task), 1);
   };
 
   $scope.newTask = function() {
